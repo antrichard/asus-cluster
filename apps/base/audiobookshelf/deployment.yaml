@@ -24,7 +24,7 @@ spec:
                 name: audiobookshelf-configmap
             #- secretRef:
             #    name: linkding-container-env
-      restartPolicy: always
+      restartPolicy: Always
                   #securityContext:
                   #            allowPrivilegeEscalation: false
                   #          volumeMounts:
