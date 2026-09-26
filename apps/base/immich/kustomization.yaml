@@ -4,7 +4,7 @@ resources:
   - namespace.yaml
     #  - deployment.yaml
     #  - configmap.yaml
-  - values.yaml
+    #  - values.yaml
   - storage.yaml
     #  - service.yaml
   - repository.yaml
