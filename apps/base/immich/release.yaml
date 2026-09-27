@@ -9,7 +9,7 @@ spec:
       chart: immich 
       version: "3.2.2"
       sourceRef:
-        kind: HelmRepository
+        kind: OCIRepository
         name: immich
       interval: 12h
         #  install:
