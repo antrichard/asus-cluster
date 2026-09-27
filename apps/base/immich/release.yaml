@@ -4,14 +4,17 @@ metadata:
   name: immich-app
 spec:
   interval: 30m
-  chart:
-    spec:
-      chart: immich 
-      version: "3.2.2"
-      sourceRef:
-        kind: OCIRepository
-        name: immich
-      interval: 12h
+  chartRef:
+    kind: OCIRepository
+    name: immich 
+      #  chart:
+      #    spec:
+      #      chart: immich 
+      #      version: "3.2.2"
+      #      sourceRef:
+      #        kind: OCIRepository
+      #        name: immich
+      #      interval: 12h
         #  install:
         #    crds: Create
         #  upgrade:
