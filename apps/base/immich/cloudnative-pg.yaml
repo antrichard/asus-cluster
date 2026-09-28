@@ -12,6 +12,9 @@ spec:
   # Immich uses advanced vector search for features like face recognition and semantic search.
   # Because of that, it requires PostgreSQL extensions that are not included in the default Postgres image.
 
+
+  enableSuperuserAccess: true
+
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
