@@ -14,6 +14,14 @@ spec:
 
 
   enableSuperuserAccess: true
+  managed:
+    roles:
+      - name: app
+        ensure: present
+        login: true
+        superuser: true
+        passwordSecret:
+          name: immich-database-app
 
   postgresql:
     shared_preload_libraries:
