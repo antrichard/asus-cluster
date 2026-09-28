@@ -17,17 +17,24 @@ spec:
       - "vchord.so"
 
     # This extension is loaded via the Database CRD at cloudnative-pg-database.yaml
-    extensions:
-      - name: vchord
-        image:
-          reference: ghcr.io/tensorchord/vchord-scratch:pg18-v1.1.1
-        dynamic_library_path:
-          - /usr/lib/postgresql/18/lib
-        extension_control_path:
-          - /usr/share/postgresql/18/
+    #    extensions:
+    # - name: vchord
+    #   image:
+    #     reference: ghcr.io/tensorchord/vchord-scratch:pg18-v1.1.1
+    #   dynamic_library_path:
+    #     - /usr/lib/postgresql/18/lib
+    #   extension_control_path:
+    #     - /usr/share/postgresql/18/
 
   bootstrap:
     initdb:
-      postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
-        - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+      #      postInitSQL:
+      #  - CREATE EXTENSION IF NOT EXISTS vector CASCADE;
+      # - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+      # - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+      # - CREATE EXTENSION IF NOT EXISTS cube CASCADE;
+      postInitApplicationSQL:
+        - CREATE EXTENSION vector CASCADE;
+        - CREATE EXTENSION vchord CASCADE;
+        - CREATE EXTENSION earthdistance CASCADE;
+        - CREATE EXTENSION cube CASCADE;
