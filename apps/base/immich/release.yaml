@@ -6,58 +6,92 @@ spec:
   interval: 30m
   chartRef:
     kind: OCIRepository
-    name: immich 
-      #  chart:
-      #    spec:
-      #      chart: immich 
-      #      version: "3.2.2"
-      #      sourceRef:
-      #        kind: OCIRepository
-      #        name: immich
-      #      interval: 12h
-        #  install:
-        #    crds: Create
-        #  upgrade:
-        #    crds: CreateReplace
-        #  driftDetection:
-        #    mode: enabled
-
+    name: immich-oci-repository 
   values:
-    server:
-      controllers:
-        main:
-          containers:
-            main:
-              env:
-                DB_HOSTNAME:
-                  valueFrom:
-                    secretKeyRef:
-                      name: immich-database-app
-                      key: host
-                DB_USERNAME:
-                  valueFrom:
-                    secretKeyRef:
-                      name: immich-database-app
-                      key: user
-                DB_PASSWORD:
-                  valueFrom:
-                    secretKeyRef:
-                      name: immich-database-app
-                      key: password
-                DB_DATABASE_NAME:
-                  valueFrom:
-                    secretKeyRef:
-                      name: immich-database-app
-                      key: dbname
 
-    valkey:
-      enabled: true
+    # --- Shared settings applied to all components ---
+
+    #server:
+    controllers:
+      main:
+        containers:
+          main:
+            env:
+              DB_HOSTNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: host
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: user
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: password
+              DB_DATABASE_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-database-app
+                    key: dbname
+              DB_STORAGE_TYPE: 'HDD'
 
     immich:
       persistence:
         library:
           existingClaim: immich-library-pvc
+    
 
-            #  valuesFrom:
-            #    - kind: ConfigMap
-            #      name: immich-configmap
+    # --- Valkey (Redis alternative) ---
+
+    valkey:
+      enabled: true
+      persistence:
+        data:
+          # type: emptyDir
+          # Optional: to keep job queues persistent, replace `type: emptyDir` above with:
+          type: persistentVolumeClaim
+          size: 1Gi
+          accessMode: ReadWriteOnce
+
+
+    # --- Server component ---
+
+    server:
+      ingress:
+        main:
+          enabled: true
+          className: traefik
+          annotations:
+            # proxy-body-size is set to 0 to remove the body limit on file uploads
+            traefik.ingress.kubernetes.io/proxy-body-size: "0"
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            traefik.ingress.kubernetes.io/router.tls: "true"
+            traefik.ingress.kubernetes.io/service.serversscheme: https
+            cert-manager.io/cluster-issuer: "letsencrypt"
+          hosts:
+            - immich.antoine-richard.net
+              #            - host: immich.antoine-richard.net
+              #              paths:
+              #                - path: "/"
+              #                  service:
+              #                    identifier: main
+          tls:
+            - secretName: immich-tls-secret
+              hosts:
+                - immich.antoine-richard.net
+
+
+    # --- Machine learning component ---
+
+    machine-learning:
+      persistence:
+        cache:
+          # type: emptyDir
+          # Optional: to avoid downloading the ML models on every start, replace `type: emptyDir` above with:
+          type: persistentVolumeClaim
+          size: 10Gi
+          accessMode: ReadWriteMany
