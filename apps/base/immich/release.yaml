@@ -73,8 +73,8 @@ spec:
             traefik.ingress.kubernetes.io/service.serversscheme: https
             cert-manager.io/cluster-issuer: "letsencrypt"
           hosts:
-            - immich.antoine-richard.net
-              #            - host: immich.antoine-richard.net
+            #            - immich.antoine-richard.net
+            - host: immich.antoine-richard.net
               #              paths:
               #                - path: "/"
               #                  service:
