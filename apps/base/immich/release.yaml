@@ -95,3 +95,4 @@ spec:
           type: persistentVolumeClaim
           size: 10Gi
           accessMode: ReadWriteMany
+          storageClass: ""
