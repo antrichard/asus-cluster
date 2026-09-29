@@ -75,10 +75,10 @@ spec:
           hosts:
             #            - immich.antoine-richard.net
             - host: immich.antoine-richard.net
-              #              paths:
-              #                - path: "/"
-              #                  service:
-              #                    identifier: main
+              paths:
+                - path: "/"
+                  service:
+                    identifier: main
           tls:
             - secretName: immich-tls-secret
               hosts:
