@@ -94,5 +94,9 @@ spec:
           # Optional: to avoid downloading the ML models on every start, replace `type: emptyDir` above with:
           type: persistentVolumeClaim
           size: 10Gi
-          accessMode: ReadWriteMany
-          storageClass: ""
+          existingClaim: immich-ml-pvc
+          # accessMode: ReadWriteOnce
+          # storageClass: ""
+          # storageClass: 
+          #  name: local-path
+          #  reclaimPolicy: Retain

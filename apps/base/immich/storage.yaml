@@ -5,6 +5,19 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: immich-storage-retain
   resources:
     requests:
       storage: 100Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-ml-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: immich-storage-retain
+  resources:
+    requests:
+      storage: 10Gi
