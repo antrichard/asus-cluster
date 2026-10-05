@@ -70,7 +70,7 @@ spec:
             traefik.ingress.kubernetes.io/router.tls: "true"
             traefik.ingress.kubernetes.io/redirect-entry-point: websecure
             cert-manager.io/cluster-issuer: "letsencrypt-cloudflare"
-            traefik.ingress.kubernetes.io/service.serverstransport: immich-timeout-transport@crd
+            traefik.ingress.kubernetes.io/service.serverstransport: immich-timeout-transport@kubernetescrd
           hosts:
             - host: immich.antoine-richard.net
               paths:
