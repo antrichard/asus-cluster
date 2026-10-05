@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: immich
 resources:
   - ../../base/immich/
-  - immich-tls-secret.yaml
+    #  - immich-tls-secret.yaml
     #  - cloudflare.yaml
     #  - ingress.yaml
