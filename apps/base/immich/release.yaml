@@ -16,6 +16,15 @@ spec:
       main:
         containers:
           main:
+
+            resources:
+              requests:
+                # memory:
+                  # cpu: 
+              limits:
+                memory: '1G'
+                  # cpu: 
+
             env:
               DB_HOSTNAME:
                 valueFrom:
