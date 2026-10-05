@@ -86,6 +86,7 @@ spec:
     # --- Machine learning component ---
 
     machine-learning:
+      enabled: false
       persistence:
         cache:
           # type: emptyDir
