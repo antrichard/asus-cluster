@@ -6,3 +6,5 @@ resources:
   - repository.yaml
   - release.yaml
   - cloudnative-pg.yaml
+  - certificate.yaml
+  - traefik-tweaks.yaml

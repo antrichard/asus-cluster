@@ -66,11 +66,11 @@ spec:
           enabled: true
           className: traefik
           annotations:
-            # proxy-body-size is set to 0 to remove the body limit on file uploads
-            traefik.ingress.kubernetes.io/proxy-body-size: "0"
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
             traefik.ingress.kubernetes.io/router.tls: "true"
-            traefik.ingress.kubernetes.io/service.serversscheme: https
+            traefik.ingress.kubernetes.io/redirect-entry-point: websecure
+            cert-manager.io/cluster-issuer: "letsencrypt-cloudflare"
+            traefik.ingress.kubernetes.io/service.serverstransport: immich-timeout-transport@crd
           hosts:
             - host: immich.antoine-richard.net
               paths:
@@ -78,7 +78,7 @@ spec:
                   service:
                     identifier: main
           tls:
-            - secretName: immich-tls-secret
+            - secretName: wildcard-antoine-richard-net-tls
               hosts:
                 - immich.antoine-richard.net
 
