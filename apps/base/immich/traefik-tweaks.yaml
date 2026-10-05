@@ -14,5 +14,4 @@ spec:
   forwardingTimeouts:
     dialTimeout: 0s
     responseHeaderTimeout: 0s
-    writeTimeout: 0s
     idleConnTimeout: 600s
