@@ -30,22 +30,20 @@ spec:
       adminPassword: antoine 
       ingress:
         enabled: true
-        
         ingressClassName: traefik
-
-          ## Hostnames.
-          ## Must be provided if Ingress is enable.
-          ##
         hosts:
           - grs.antoine-richard.net
-
-          ## TLS configuration for grafana Ingress
-          ## Secret must be manually created in the namespace
-          ##
         tls:
           - secretName: grafana-tls-secret
             hosts:
               - grs.antoine-richard.net
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "150Mi"
+        limits:
+          cpu: "500m"
+          memory: "500Mi"
 
     prometheus:
       prometheusSpec:
