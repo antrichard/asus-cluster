@@ -9,9 +9,6 @@ spec:
     spec:
       chart: kube-prometheus-stack
       version: "66.2.2"
-
-      # version: "58.x"
-
       sourceRef:
         kind: HelmRepository
         name: kube-prometheus-stack
@@ -49,3 +46,16 @@ spec:
           - secretName: grafana-tls-secret
             hosts:
               - grs.antoine-richard.net
+
+    prometheus:
+      prometheusSpec:
+        scrapeInterval: "60s" # default 30s
+        evaluationInterval: "60s" # default ""
+        retention: "12h" # default 10d
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "450Mi"

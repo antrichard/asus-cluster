@@ -19,11 +19,12 @@ spec:
 
             resources:
               requests:
-                # memory:
-                  # cpu: 
+                memory: 500Mi
+                cpu: 200m
               limits:
-                memory: '1G'
-                  # cpu: 
+                #memory: 750Mi
+                memory: 1000Mi
+                cpu: "2"
 
             env:
               DB_HOSTNAME:
@@ -95,7 +96,7 @@ spec:
     # --- Machine learning component ---
 
     machine-learning:
-      enabled: false
+      enabled: true
       persistence:
         cache:
           # type: emptyDir
@@ -108,3 +109,10 @@ spec:
           # storageClass: 
           #  name: local-path
           #  reclaimPolicy: Retain
+      resources:
+        requests:
+          cpu: 500m
+          memory: 500Mi
+        limits:
+          cpu: "4"
+          memory: 1500Mi
