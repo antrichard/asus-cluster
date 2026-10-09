@@ -18,7 +18,10 @@ spec:
 
               env:
                 - name: LOG_LEVEL
-                  value: "debug"
+                  value: "info"
+                    #value: "debug"
+                - name: NODE_OPTIONS
+                  value: "--max-old-space-size=512"
 
               envFrom:
                 - secretRef:
