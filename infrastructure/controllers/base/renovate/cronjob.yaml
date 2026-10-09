@@ -16,6 +16,10 @@ spec:
               args:
                 - antrichard/asus-cluster
 
+              env:
+                - name: LOG_LEVEL
+                  value: "debug"
+
               envFrom:
                 - secretRef:
                     name: renovate-container-env
