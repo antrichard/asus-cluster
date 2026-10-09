@@ -3,6 +3,10 @@
   "extends": [
     "config:recommended"
   ],
+
+  "timezone": "Europe/Paris",
+  "schedule": ["between 12pm and 1pm"],
+
   "flux": {
     "fileMatch": [
       "\\.yaml$"
@@ -41,7 +45,10 @@
         "fluxcd/flux2"
       ],
       "groupName": "Flux CD System",
-      "groupSlug": "fluxcd-system"
+      "groupSlug": "fluxcd-system",
+      //"automerge": true,
+      //"platformAutomerge": true,
+      "matchUpdateTypes": ["minor", "patch"]
     },
     {
       "description": "Immich Database : PostgreSQL image for CNPG & VChord extension",
