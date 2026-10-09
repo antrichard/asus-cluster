@@ -21,7 +21,9 @@ spec:
                   value: "info"
                     #value: "debug"
                 - name: NODE_OPTIONS
-                  value: "--max-old-space-size=512"
+                  value: "--max-old-space-size=300"
+                - name: RENOVATE_REPOSITORY_CACHE
+                  value: "disabled"
 
               envFrom:
                 - secretRef:
