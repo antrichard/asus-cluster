@@ -30,5 +30,27 @@
       ],
       "datasourceTemplate": "docker"
     }
+  ],
+  "packageRules": [
+    {
+      "description": "Flux CD (CLI & controllers)",
+      "matchPackageNames": [
+        "ghcr.io/fluxcd/helm-controller",
+        "ghcr.io/fluxcd/kustomize-controller",
+        "ghcr.io/fluxcd/source-controller",
+        "fluxcd/flux2"
+      ],
+      "groupName": "Flux CD System",
+      "groupSlug": "fluxcd-system"
+    },
+    {
+      "description": "Immich Database : PostgreSQL image for CNPG & VChord extension",
+      "matchPackageNames": [
+        "ghcr.io/cloudnative-pg/postgresql",
+        "ghcr.io/tensorchord/vchord-scratch"
+      ],
+      "groupName": "Immich Database (CloudNative-PG & Extensions)",
+      "groupSlug": "immich-database-cnpg"
+    }
   ]
 }
