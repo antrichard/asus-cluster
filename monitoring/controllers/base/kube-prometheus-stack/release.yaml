@@ -27,6 +27,7 @@ spec:
           kind: PrometheusRule
   values:
     grafana:
+      replicas: 1
       adminPassword: antoine 
       ingress:
         enabled: true
@@ -45,7 +46,12 @@ spec:
           cpu: "500m"
           memory: "500Mi"
 
+    alertmanager:
+      alertmanagerSpec:
+        replicas: 1
+
     prometheus:
+      replicas: 1
       prometheusSpec:
         scrapeInterval: "60s" # default 30s
         evaluationInterval: "60s" # default ""
