@@ -7,12 +7,8 @@ spec:
   interval: 30m
   install:
     crds: Create
-    wait: true
-    timeout: 5m
   upgrade:
     crds: CreateReplace
-    wait: true
-    timeout: 5m
   chart:
     spec:
       chart: cloudnative-pg

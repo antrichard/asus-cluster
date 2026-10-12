@@ -4,12 +4,6 @@ metadata:
   name: immich-app
 spec:
   interval: 30m
-  install:
-    wait: true
-    timeout: 5m
-  upgrade:
-    wait: true
-    timeout: 5m
   chartRef:
     kind: OCIRepository
     name: immich-oci-repository 
