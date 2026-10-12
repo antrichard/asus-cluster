@@ -30,13 +30,13 @@ spec:
 
           startupProbe:
             httpGet:
-              path: /health
+              path: /audiobookshelf/health
               port: 3005
             failureThreshold: 30
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /health
+              path: /audiobookshelf/health
               port: 3005
             periodSeconds: 10
             timeoutSeconds: 2
