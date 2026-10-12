@@ -2,6 +2,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: immich-library-pvc
+  annotations:
+    helm.toolkit.fluxcd.io/prune: "disabled"
+    kustomize.toolkit.fluxcd.io/prune: "disabled"
 spec:
   accessModes:
     - ReadWriteOnce
@@ -14,6 +17,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: immich-ml-pvc
+  annotations:
+    helm.toolkit.fluxcd.io/prune: "disabled"
+    kustomize.toolkit.fluxcd.io/prune: "disabled"
 spec:
   accessModes:
     - ReadWriteOnce

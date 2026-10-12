@@ -5,6 +5,14 @@ metadata:
   namespace: cloudnative-pg
 spec:
   interval: 30m
+  install:
+    crds: Create
+    wait: true
+    timeout: 5m
+  upgrade:
+    crds: CreateReplace
+    wait: true
+    timeout: 5m
   chart:
     spec:
       chart: cloudnative-pg
@@ -13,10 +21,6 @@ spec:
         kind: HelmRepository
         name: cloudnative-pg
         namespace: cloudnative-pg
-  install:
-    crds: Create
-  upgrade:
-    crds: CreateReplace
   values:
     replicaCount: 1
     resources:

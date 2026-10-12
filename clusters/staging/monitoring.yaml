@@ -4,16 +4,17 @@ metadata:
   name: monitoring-controllers
   namespace: flux-system
 spec:
-  #dependsOn:
-  #  - name: infra-configs
-  interval: 1m0s
+  dependsOn:
+    - name: infrastructure-configs
+  interval: 10m
   retryInterval: 1m
-  timeout: 5m
+  timeout: 10m
   sourceRef:
     kind: GitRepository
     name: flux-system
   path: ./monitoring/controllers/staging
   prune: true
+  wait: true
     #  decryption:
     #    provider: sops
     #    secretRef:
@@ -25,9 +26,9 @@ metadata:
   name: monitoring-configs 
   namespace: flux-system
 spec:
-  #dependsOn:
-  #  - name: infra-configs
-  interval: 1m0s
+  dependsOn:
+    - name: monitoring-controllers
+  interval: 10m
   retryInterval: 1m
   timeout: 5m
   sourceRef:
@@ -35,6 +36,7 @@ spec:
     name: flux-system
   path: ./monitoring/configs/staging
   prune: true
+  wait: true
   decryption:
     provider: sops
     secretRef:
