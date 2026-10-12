@@ -5,7 +5,8 @@
   ],
 
   "timezone": "Europe/Paris",
-  "schedule": ["between 12pm and 1pm"],
+  // between 12pm and 1pm
+  "schedule": ["* 12 * * *"],
 
   "flux": {
     "fileMatch": [
