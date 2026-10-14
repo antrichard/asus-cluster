@@ -7,3 +7,6 @@ resources:
     #  - cloudflare-secret.yaml
   - linkding-container-env-secret.yaml
   - ingress.yaml
+
+patches:
+  - path: sleep-patch.yaml

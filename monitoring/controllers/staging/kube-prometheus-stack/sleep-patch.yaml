@@ -1,0 +1,40 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  postRenderers:
+    - kustomize:
+        patches:
+
+          - patch: |
+              apiVersion: ://coreos.com
+              kind: Prometheus
+              metadata:
+                name: kube-prometheus-stack-prometheus
+              spec:
+                replicas: 0
+            target:
+              kind: Prometheus
+
+          - patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: kube-prometheus-stack-grafana
+              spec:
+                replicas: 0
+            target:
+              kind: Deployment
+              name: kube-prometheus-stack-grafana
+
+          - patch: |
+              apiVersion: ://coreos.com
+              kind: Alertmanager
+              metadata:
+                name: kube-prometheus-stack-alertmanager
+              spec:
+                replicas: 0
+            target:
+              kind: Alertmanager
