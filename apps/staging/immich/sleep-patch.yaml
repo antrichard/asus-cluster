@@ -39,3 +39,10 @@ spec:
                 name: immich-app-valkey
               spec:
                 replicas: 0
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-database
+  annotations:
+    cnpg.io/hibernation: "on"

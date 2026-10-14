@@ -7,17 +7,13 @@ resources:
 
 patches:
   - path: sleep-patch.yaml
-  - target:
-      version: v1
-      group: postgresql.cnpg.io
-      kind: Cluster
-      name: immich-database
-    patch: |-
-      - op: replace
-        path: /spec/instances
-        value: 1
-      - op: add
-        path: /spec/nodeMaintenanceWindow
-        value:
-          inProgress: true
-          reusePVC: true
+
+    #  - target:
+    #      version: v1
+    #      group: postgresql.cnpg.io
+    #      kind: Cluster
+    #      name: immich-database
+    #    patch: |-
+    #      - op: add
+    #        path: /metadata/annotations/cnpg.io~1hibernation
+    #        value: "on"
