@@ -6,14 +6,4 @@ resources:
     #  - immich-tls-secret.yaml
 
 patches:
-  - path: sleep-patch.yaml
-
-    #  - target:
-    #      version: v1
-    #      group: postgresql.cnpg.io
-    #      kind: Cluster
-    #      name: immich-database
-    #    patch: |-
-    #      - op: add
-    #        path: /metadata/annotations/cnpg.io~1hibernation
-    #        value: "on"
+  #- path: sleep-patch.yaml
