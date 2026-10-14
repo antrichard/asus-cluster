@@ -15,4 +15,9 @@ patches:
     patch: |-
       - op: replace
         path: /spec/instances
-        value: 0
+        value: 1
+      - op: add
+        path: /spec/nodeMaintenanceWindow
+        value:
+          inProgress: true
+          reusePVC: true
