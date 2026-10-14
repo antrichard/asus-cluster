@@ -1,0 +1,54 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  postRenderers:
+    - kustomize:
+        patches:
+
+          - target:
+              kind: Deployment
+              name: immich-app-server
+            patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: immich-app-server
+              spec:
+                replicas: 0
+
+          - target:
+              kind: Deployment
+              name: immich-app-machine-learning
+            patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: immich-app-machine-learning
+              spec:
+                replicas: 0
+
+          - target:
+              kind: Deployment
+              name: immich-app-valkey
+            patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: immich-app-valkey
+              spec:
+                replicas: 0
+
+          - target:
+              kind: Cluster
+              group: postgresql.cnpg.io
+              name: immich-database
+            patch: |
+              apiVersion: postgresql.cnpg.io/v1
+              kind: Cluster
+              metadata:
+                name: immich-database
+              spec:
+                instances: 0

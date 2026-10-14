@@ -4,5 +4,6 @@ namespace: immich
 resources:
   - ../../base/immich/
     #  - immich-tls-secret.yaml
-    #  - cloudflare.yaml
-    #  - ingress.yaml
+
+patches:
+  - path: sleep-patch.yaml
