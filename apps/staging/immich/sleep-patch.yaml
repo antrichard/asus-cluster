@@ -39,15 +39,3 @@ spec:
                 name: immich-app-valkey
               spec:
                 replicas: 0
-
-          - target:
-              kind: Cluster
-              group: postgresql.cnpg.io
-              name: immich-database
-            patch: |
-              apiVersion: postgresql.cnpg.io/v1
-              kind: Cluster
-              metadata:
-                name: immich-database
-              spec:
-                instances: 0

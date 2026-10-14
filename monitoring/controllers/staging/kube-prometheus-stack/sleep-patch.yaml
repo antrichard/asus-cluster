@@ -38,3 +38,39 @@ spec:
                 replicas: 0
             target:
               kind: Alertmanager
+
+          - target:
+              kind: Deployment
+              name: kube-prometheus-stack-operator
+            patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: kube-prometheus-stack-operator
+              spec:
+                replicas: 0
+
+          - target:
+              kind: Deployment
+              name: kube-prometheus-stack-kube-state-metrics
+            patch: |
+              apiVersion: apps/v1
+              kind: Deployment
+              metadata:
+                name: kube-prometheus-stack-kube-state-metrics
+              spec:
+                replicas: 0
+
+          - target:
+              kind: DaemonSet
+              name: kube-prometheus-stack-prometheus-node-exporter
+            patch: |
+              apiVersion: apps/v1
+              kind: DaemonSet
+              metadata:
+                name: kube-prometheus-stack-prometheus-node-exporter
+              spec:
+                template:
+                  spec:
+                    nodeSelector:
+                      app: sleep-mode-active # fake label

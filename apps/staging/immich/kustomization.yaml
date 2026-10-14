@@ -7,3 +7,12 @@ resources:
 
 patches:
   - path: sleep-patch.yaml
+  - target:
+      version: v1
+      group: postgresql.cnpg.io
+      kind: Cluster
+      name: immich-database
+    patch: |-
+      - op: replace
+        path: /spec/instances
+        value: 0
