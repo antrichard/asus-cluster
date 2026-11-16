@@ -4,3 +4,4 @@ resources:
   - renovate
   - cloudnative-pg
   - cert-manager
+  - keda
