@@ -9,9 +9,9 @@ spec:
   minReplicaCount: 0
   maxReplicaCount: 1
     #cooldownPeriod: 600 # 10 min
-  cooldownPeriod: 30 # test 30sec
+  cooldownPeriod: 300 # test 300sec
   triggers:
     - type: external-push
       metadata:
         scalerAddress: keda-add-ons-http-external-scaler.keda.svc.cluster.local:9090
-        interceptorRoute: audiobookshelf
+        interceptorRoute: audiobookshelf/audiobookshelf
