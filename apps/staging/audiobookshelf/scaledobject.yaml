@@ -1,0 +1,17 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: audiobookshelf
+  namespace: audiobookshelf
+spec:
+  scaleTargetRef:
+    name: audiobookshelf
+  minReplicaCount: 0
+  maxReplicaCount: 1
+    #cooldownPeriod: 600 # 10 min
+  cooldownPeriod: 30 # test 30sec
+  triggers:
+    - type: external-push
+      metadata:
+        scalerAddress: keda-add-ons-http-external-scaler.keda.svc.cluster.local:9090
+        interceptorRoute: audiobookshelf

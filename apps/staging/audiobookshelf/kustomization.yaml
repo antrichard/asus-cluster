@@ -5,6 +5,8 @@ resources:
   - ../../base/audiobookshelf/
   - cloudflare.yaml
   - secret.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
 
-patches:
-  - path: sleep-patch.yaml
+#patches:
+  #- path: sleep-patch.yaml

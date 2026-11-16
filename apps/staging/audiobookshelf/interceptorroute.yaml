@@ -1,0 +1,15 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: audiobookshelf
+  namespace: audiobookshelf
+spec:
+  target:
+    service: audiobookshelf
+    port: 3005
+  rules:
+    - hosts:
+        - audiobooks.antoine-richard.net
+  scalingMetric:
+    concurrency:
+      targetValue: 10
