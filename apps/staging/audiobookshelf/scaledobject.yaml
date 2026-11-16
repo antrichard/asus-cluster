@@ -14,4 +14,4 @@ spec:
     - type: external-push
       metadata:
         scalerAddress: keda-add-ons-http-external-scaler.keda.svc.cluster.local:9090
-        interceptorRoute: audiobookshelf/audiobookshelf
+        interceptorRoute: audiobookshelf
