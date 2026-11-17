@@ -8,5 +8,5 @@ resources:
   - linkding-container-env-secret.yaml
   - ingress.yaml
 
-patches:
-  - path: sleep-patch.yaml
+#patches:
+  #- path: sleep-patch.yaml
