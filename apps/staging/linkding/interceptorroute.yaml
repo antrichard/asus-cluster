@@ -1,0 +1,15 @@
+apiVersion: http.keda.sh/v1beta1
+kind: InterceptorRoute
+metadata:
+  name: linkding
+  namespace: linkding
+spec:
+  target:
+    service: linkding
+    port: 9090
+  rules:
+    - hosts:
+        - lds.antoine-richard.net
+  scalingMetric:
+    concurrency:
+      targetValue: 10

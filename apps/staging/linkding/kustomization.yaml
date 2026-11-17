@@ -7,6 +7,9 @@ resources:
     #  - cloudflare-secret.yaml
   - linkding-container-env-secret.yaml
   - ingress.yaml
+  - interceptorroute.yaml
+  - scaledobject.yaml
+  - keda-proxy-service.yaml
 
 #patches:
   #- path: sleep-patch.yaml

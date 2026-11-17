@@ -1,0 +1,16 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: linkding
+  namespace: linkding
+spec:
+  scaleTargetRef:
+    name: linkding
+  minReplicaCount: 0
+  maxReplicaCount: 1
+  cooldownPeriod: 300 # 5min
+  triggers:
+    - type: external-push
+      metadata:
+        scalerAddress: keda-add-ons-http-external-scaler.keda.svc.cluster.local:9090
+        interceptorRoute: linkding
