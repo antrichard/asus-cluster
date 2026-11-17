@@ -8,8 +8,7 @@ spec:
     name: audiobookshelf
   minReplicaCount: 0
   maxReplicaCount: 1
-    #cooldownPeriod: 600 # 10 min
-  cooldownPeriod: 300 # test 300sec
+  cooldownPeriod: 300 # 5min
   triggers:
     - type: external-push
       metadata:
