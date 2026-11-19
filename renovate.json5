@@ -10,18 +10,18 @@
 
   "flux": {
     "managerFilePatterns": [
-      "\\.yaml$"
+      "/\\.ya?ml$/"
     ]
   },
   "kubernetes": {
     "managerFilePatterns": [
-      "\\.yaml$"
+      "/\\.ya?ml$/"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["\\.yaml$"],
+      "managerFilePatterns": ["/\\.ya?ml$/"],
       "matchStrings": [
         "imageName:\\s*(?<depName>ghcr\\.io/cloudnative-pg/postgresql):(?<currentValue>[^\\s]+)"
       ],
@@ -29,7 +29,7 @@
     },
     {
       "customType": "regex",
-      "managerFilePatterns": ["\\.yaml$"],
+      "managerFilePatterns": ["/\\.ya?ml$/"],
       "matchStrings": [
         "reference:\\s*(?<depName>ghcr\\.io/tensorchord/vchord-scratch):(?<currentValue>[^\\s]+)"
       ],
@@ -38,7 +38,7 @@
     {
       "description": "Generic YAML comment annotation for Helm values tags",
       "customType": "regex",
-      "managerFilePatterns": ["\\.yaml$"],
+      "managerFilePatterns": ["/\\.ya?ml$/"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)(?: versioning=(?<versioning>.*?))?\\s+tag:\\s*[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
       ],
