@@ -9,19 +9,19 @@
   "schedule": ["* 12 * * *"],
 
   "flux": {
-    "fileMatch": [
+    "managerFilePatterns": [
       "\\.yaml$"
     ]
   },
   "kubernetes": {
-    "fileMatch": [
+    "managerFilePatterns": [
       "\\.yaml$"
     ]
   },
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["\\.yaml$"],
+      "managerFilePatterns": ["\\.yaml$"],
       "matchStrings": [
         "imageName:\\s*(?<depName>ghcr\\.io/cloudnative-pg/postgresql):(?<currentValue>[^\\s]+)"
       ],
@@ -29,11 +29,20 @@
     },
     {
       "customType": "regex",
-      "fileMatch": ["\\.yaml$"],
+      "managerFilePatterns": ["\\.yaml$"],
       "matchStrings": [
         "reference:\\s*(?<depName>ghcr\\.io/tensorchord/vchord-scratch):(?<currentValue>[^\\s]+)"
       ],
       "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Generic YAML comment annotation for Helm values tags",
+      "customType": "regex",
+      "managerFilePatterns": ["\\.yaml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)(?: versioning=(?<versioning>.*?))?\\s+tag:\\s*[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ],
   "packageRules": [
@@ -59,6 +68,14 @@
       ],
       "groupName": "Immich Database (CloudNative-PG & Extensions)",
       "groupSlug": "immich-database-cnpg"
+    },
+    {
+      "description": "Immich Application",
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server"
+      ],
+      "groupName": "Immich Application",
+      "groupSlug": "immich-app"
     }
   ]
 }
