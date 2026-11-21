@@ -9,8 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   selector:
+    app.kubernetes.io/instance: traefik-kube-system
     app.kubernetes.io/name: traefik
   ports:
     - name: https
       port: 443
+      protocol: TCP
       targetPort: websecure # 8443 or websecure (verify with kubectl get svc traefik -n kube-system -o yaml)
