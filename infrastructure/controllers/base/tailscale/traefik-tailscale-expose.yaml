@@ -4,8 +4,8 @@ metadata:
   name: traefik-tailscale
   namespace: kube-system
   annotations:
-    ://tailscale.com: "true"
-    ://tailscale.com: "traefik-asus-lab"
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: "traefik-asus-lab"
 spec:
   type: ClusterIP
   selector:
