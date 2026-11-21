@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+    client_id: ENC[AES256_GCM,data:+F2M3xPrmECLU8rFhAnVjpV2ehgm8DzZ,iv:QI5HnxABJR4HZ0c+RYaSRd0OpHnvhfktOQRxsGjhUgQ=,tag:B/41OoNAz82NA8GK0ISbqw==,type:str]
+    client_secret: ENC[AES256_GCM,data:upPFvbY5XTQQFUp0iUFgjKD6XXXbRE49724Lwp3uZxZBf7VqMg7pqAPEO6g44QZmI8m2A+GMsJ7wMx2TWWlDPxI6Is0YipdHU8gKmkpHUilp+RLH/QJE8Q==,iv:j9/zGyt04fwXTzXnNEcuDK2N2z0ZuywTbr9gO7T2rjg=,tag:mQ8TNTk9r1MVQ/ffnVLSnA==,type:str]
+kind: Secret
+metadata:
+    name: operator-oauth
+    namespace: tailscale
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5UVRGankzb1pPbG9DSXAy
+            VE5EeXR3dUt4NzhDR241SUFSdGljcWpLaGdvCjZLVklpU2hxMThxWWt2SHI2dmx0
+            RXRPenhtU0IySWxWbUZNUVJZTk5PaGsKLS0tIGY1MDRCZE1jSUo0UmR3V1ppREtt
+            L21iWEtDc21VOURzZndkTTRhRlI1RVkKBgz3JhkzCnOlM8PoG1jalKBvsHUw+r2C
+            Jgp7m/maR+Vl3qL9us0q+/GItZSulgDpyBV6WM56FaODTW7uZkeEGw==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age1gt8thvlstk0ulwrxpm7hvgcw9wnt0h9rgjed6htqscar27cj93fqq0f5yh
+    encrypted_regex: ^(data|stringData)$
+    lastmodified: "2026-11-21T00:29:04Z"
+    mac: ENC[AES256_GCM,data:489Q3cn5jyVgaRpO7lAyk8ODn0JiNMtFlZbagYMsQdQyQQzbNlCHiFQsTjJZzhB5LSo55tg6HVprQsw7i37wjP2dkSeyliGmgm4G6w2G4SH/ML++fLFu73WMbayPH5W12AXQZtUYNH+/KgibaiBYiiRBsWKQDkKcF/0YsQowKYE=,iv:PcUVvtGoEBsyCB57kZWPpKbv5ZW7gFmU1P7+SMVQ4OQ=,tag:yGohbyB5Ir6VCoLx1TwKzA==,type:str]
+    version: 3.13.3
