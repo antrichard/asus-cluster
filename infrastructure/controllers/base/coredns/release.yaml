@@ -1,0 +1,57 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: coredns
+  namespace: coredns
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: coredns
+      version: "1.50.8"
+      sourceRef:
+        kind: HelmRepository
+        name: coredns
+        namespace: coredns
+  values:
+    isClusterService: false
+
+    replicaCount: 1
+
+    serviceType: LoadBalancer
+    service:
+      loadBalancerIP: 192.168.1.250
+
+    servers:
+      - zones:
+          - zone: antoine-richard.net.
+        port: 53
+        plugins:
+          - name: log
+          - name: errors
+          - name: template
+            parameters: IN A
+            configBlock: |-
+              match .*\.antoine-richard\.net\.$
+              answer "{{ .Name }} 60 IN A 192.168.1.201"
+          - name: forward
+            parameters: . 1.1.1.1
+
+      - zones:
+          - zone: .
+        port: 53
+        plugins:
+          - name: errors
+          - name: health
+            configBlock: |-
+              lameduck 5s
+          - name: ready
+          - name: prometheus
+            parameters: 0.0.0.0:9153
+          - name: forward
+            parameters: . 1.1.1.1 9.9.9.9
+          - name: cache
+            parameters: 300
+          - name: loop
+          - name: reload
+          - name: loadbalance
