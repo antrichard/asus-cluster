@@ -26,6 +26,7 @@ spec:
       - zones:
           - zone: antoine-richard.net.
         port: 53
+        use_tcp: true
         plugins:
           - name: log
           - name: errors
@@ -45,6 +46,7 @@ spec:
       - zones:
           - zone: .
         port: 53
+        use_tcp: true
         plugins:
           - name: errors
           - name: health
